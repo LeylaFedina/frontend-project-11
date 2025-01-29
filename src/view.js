@@ -88,12 +88,13 @@ export default (elements, i18n, state) => {
     const modalLink = document.querySelector('[target="_blank"]');
     const modalBtn = document.querySelector('[data-bs-dismiss="modal"]');
 
+
     const { title, description, url } = activePost;
     modalTitle.textContent = title;
     modalBody.textContent = description;
     modalLink.textContent = t('modal.modalLink');
     modalBtn.textContent = t('modal.modalBody');
-    modalLink.url = url;
+    modalLink.href = url;
   };
 
   const renderFinishedProcess = () => {
