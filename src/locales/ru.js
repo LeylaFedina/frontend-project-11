@@ -16,7 +16,7 @@ export default {
     },
     modal: {
       modalLink: 'Читать полностью',
-      modalBody: 'Закрыть',
+      modalBody: '',
     },
   },
 };
