@@ -1,14 +1,14 @@
 import onChange from 'on-change';
 
 export default (elements, i18n, state) => {
-  const {t} = i18n;
+  const { t } = i18n;
 
   const renderForm = () => {
-    const {input} = elements;
+    const { input } = elements;
     input.focus();
     Object.entries(elements.staticEl).forEach(([key, el]) => {
       const element = el;
-      element.textContent = t(`${key}`);
+      element.textContent = t(`${ key }`);
     });
   };
 
@@ -34,7 +34,7 @@ export default (elements, i18n, state) => {
     const lists = document.createElement('ul');
     lists.classList.add('list-group', 'border-0', 'rounded-0');
 
-    state.feeds.forEach(({title, description}) => {
+    state.feeds.forEach(({ title, description }) => {
       const li = document.createElement('li');
       const h3 = document.createElement('h3');
       const p = document.createElement('p');
@@ -57,7 +57,7 @@ export default (elements, i18n, state) => {
     const lists = document.createElement('ul');
     lists.classList.add('list-group', 'border-0', 'rounded-0');
 
-    state.posts.forEach(({title, id, url}) => {
+    state.posts.forEach(({ title, id, url }) => {
       const li = document.createElement('li');
       const link = document.createElement('a');
       const button = document.createElement('button');
@@ -82,13 +82,13 @@ export default (elements, i18n, state) => {
   };
 
   const renderModal = () => {
-    const activePost = state.posts.find(({id}) => id === state.ui.activePostId);
+    const activePost = state.posts.find(({ id }) => id === state.ui.activePostId);
     const modalTitle = document.querySelector('.modal-title');
     const modalBody = document.querySelector('.modal-body');
     const modalLink = document.querySelector('[target="_blank"]');
     const modalBtn = document.querySelector('[data-bs-dismiss="modal"]');
 
-    const {title, description, url} = activePost;
+    const { title, description, url } = activePost;
     modalTitle.textContent = title;
     modalBody.textContent = description;
     modalLink.textContent = t('modal.modalLink');
@@ -106,7 +106,7 @@ export default (elements, i18n, state) => {
   };
 
   const renderInvalidRSS = () => {
-    const {errorElement} = elements;
+    const { errorElement } = elements;
     errorElement.classList.remove('text-success');
     errorElement.classList.add('text-danger');
     errorElement.textContent = t('errors.invalidRSS');
