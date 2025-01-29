@@ -8,7 +8,7 @@ const validate = (url, urlFeeds) => {
       .required()
       .notOneOf(urlFeeds),
   });
-  return schema.validate({url});
+  return schema.validate({ url });
 };
 
 export const proxyObj = (url) => url;
