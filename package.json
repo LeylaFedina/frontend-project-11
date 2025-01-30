@@ -11,9 +11,6 @@
     "watch": "webpack --watch",
     "serve": "webpack serve"
   },
-  "engines": {
-    "node": "18.18.0"
-  },
   "author": "Leyla Fedina",
   "license": "ISC",
   "dependencies": {
