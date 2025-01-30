@@ -4,7 +4,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import validate, { createLink } from '../utils.js';
 import watch from './view.js';
-import ru from './locales/ru.js';
+import ru from './lang/ru.js';
 import parse from './parser.js';
 
 const elements = {
@@ -73,6 +73,17 @@ export default () => {
 
     getUpdateContent(watchedState.feeds);
 
+    elements.postsContainer.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        watchedState.ui.touchedPostId.add(e.target.id);
+      }
+      if (e.target.tagName === 'BUTTON') {
+        watchedState.ui.touchedPostId.add(e.target.dataset.id);
+        watchedState.ui.activePostId = e.target.dataset.id;
+      }
+    });
+
+    // Прослушивание формы отправки
     elements.form.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
@@ -100,16 +111,6 @@ export default () => {
             watchedState.form.errors = error.message;
           }
         });
-    });
-
-    elements.postsContainer.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') {
-        watchedState.ui.touchedPostId.add(e.target.id);
-      }
-      if (e.target.tagName === 'BUTTON') {
-        watchedState.ui.touchedPostId.add(e.target.dataset.id);
-        watchedState.ui.activePostId = e.target.dataset.id;
-      }
     });
   });
 };

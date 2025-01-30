@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import local from './src/locales/locales.js';
+import local from './src/lang/lang.js';
 
 yup.setLocale(local);
 

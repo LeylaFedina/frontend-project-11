@@ -6,10 +6,6 @@ export default {
       invalidRSS: 'Ресурс не содержит валидный RSS',
       networkError: 'Ошибка сети',
     },
-    modal: {
-      modalLink: 'Читать полностью',
-      modalBody: '',
-    },
     title: 'RSS агрегатор',
     subtitle: 'Начните читать RSS сегодня! Это легко, это красиво.',
     label: 'Ссылка RSS',
@@ -18,5 +14,9 @@ export default {
     feedTitle: 'Фиды',
     postsTitle: 'Посты',
     postsButton: 'Просмотр',
+    modal: {
+      modalLink: 'Читать полностью',
+      modalBody: '',
+    },
   },
 };

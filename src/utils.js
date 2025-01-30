@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+// Валидация
 const validate = (url, urlFeeds) => {
   const schema = yup.object({
     url: yup
