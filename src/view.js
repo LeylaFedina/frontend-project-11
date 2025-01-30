@@ -8,7 +8,7 @@ export default (elements, i18n, state) => {
     input.focus();
     Object.entries(elements.staticEl).forEach(([key, el]) => {
       const element = el;
-      element.textContent = t(`${ key }`);
+      element.textContent = t(`${key}`);
     });
   };
 
@@ -88,7 +88,6 @@ export default (elements, i18n, state) => {
     const modalLink = document.querySelector('[target="_blank"]');
     const modalBtn = document.querySelector('[data-bs-dismiss="modal"]');
 
-
     const { title, description, url } = activePost;
     modalTitle.textContent = title;
     modalBody.textContent = description;
@@ -98,7 +97,7 @@ export default (elements, i18n, state) => {
   };
 
   const renderFinishedProcess = () => {
-    const {staticEl, input, errorElement} = elements;
+    const { staticEl, input, errorElement } = elements;
     staticEl.button.disabled = false;
     input.classList.remove('is-invalid');
     errorElement.classList.remove('text-danger');
