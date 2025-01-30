@@ -15,6 +15,7 @@ const validate = (url, urlFeeds) => {
   return schema.validate({ url });
 };
 
+// Server fetch url for get queries
 export const createLink = (url) => {
   const originsUrl = new URL('https://allorigins.hexlet.app/get?');
   originsUrl.searchParams.set('disableCache', 'true');
