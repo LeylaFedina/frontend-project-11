@@ -34,6 +34,5 @@ export const validateWithFlag = (url, urlFeeds) => {
   return schema.validate({ url });
 };
 
-
 export const proxyObj = (url) => url;
 export default validate;
