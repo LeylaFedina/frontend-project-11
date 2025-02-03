@@ -4,6 +4,10 @@ export default (data) => {
   const errorNode = doc.querySelector('parsererror');
   if (errorNode) {
     const error = new Error('invalidRSS');
+    console.log('Внимание! Отправляемые данные некорректны!');
+    console.log('**** Ответ сервера ****');
+    console.log(errorNode.textContent);
+    console.log('***********************');
     throw error;
   }
   const feedTitle = doc.querySelector('channel > title').textContent;
