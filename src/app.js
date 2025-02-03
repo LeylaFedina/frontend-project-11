@@ -96,7 +96,7 @@ export default () => {
       validateWithFlag(urlTarget, urlFeeds)
         .then(({ url }) => axios.get(createLink(url)))
         .then((responce) => {
-          if(submitButton){
+          if (submitButton) {
             submitButton.setAttribute('disabled', 'true');
           }
           const parseData = parse(responce.data.contents);
@@ -107,7 +107,7 @@ export default () => {
           watchedState.loadingProcess.error = '';
         })
         .catch((error) => {
-          if(submitButton){
+          if (submitButton) {
             submitButton.removeAttribute('disabled');
           }
           if (error.isAxiosError) {
