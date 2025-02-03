@@ -1,4 +1,6 @@
 import * as yup from 'yup';
+import local from './lang/lang.js';
+yup.setLocale(local);
 
 // Валидация
 const validate = (url, urlFeeds) => {
@@ -11,6 +13,27 @@ const validate = (url, urlFeeds) => {
   });
   return schema.validate({ url });
 };
+
+// Server fetch url for get queries
+export const createLink = (url) => {
+  const originsUrl = new URL('https://allorigins.hexlet.app/get?');
+  originsUrl.searchParams.set('disableCache', 'true');
+  originsUrl.searchParams.set('url', url);
+  return originsUrl.toString();
+};
+
+export const validateWithFlag = (url, urlFeeds) => {
+  const schema = yup.object().shape({
+    url: yup
+      .string()
+      .url('errors.invalidUrl')
+      .trim()
+      .required()
+      .notOneOf(urlFeeds, 'errors.existsRss'),
+  });
+  return schema.validate({ url });
+};
+
 
 export const proxyObj = (url) => url;
 export default validate;
