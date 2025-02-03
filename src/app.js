@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import 'bootstrap';
 import axios from 'axios';
 import _ from 'lodash';
-import validateWithFlag, { createLink } from './utils.js';
+import validate, { createLink } from './utils.js';
 import watch from './view.js';
 import ru from './lang/ru.js';
 import parse from './parser.js';
@@ -93,7 +93,7 @@ export default () => {
 
       watchedState.loadingProcess.status = 'sending';
 
-      validateWithFlag(urlTarget, urlFeeds)
+      validate(urlTarget, urlFeeds)
         .then(({ url }) => axios.get(createLink(url)))
         .then((responce) => {
           if (submitButton) {

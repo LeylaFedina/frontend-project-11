@@ -2,17 +2,6 @@ import * as yup from 'yup';
 import local from './lang/lang.js';
 yup.setLocale(local);
 
-// Валидация
-const validate = (url, urlFeeds) => {
-  const schema = yup.object({
-    url: yup
-      .string()
-      .trim()
-      .required()
-      .notOneOf(urlFeeds),
-  });
-  return schema.validate({ url });
-};
 
 // Server fetch url for get queries
 export const createLink = (url) => {
@@ -22,7 +11,7 @@ export const createLink = (url) => {
   return originsUrl.toString();
 };
 
-export const validateWithFlag = (url, urlFeeds) => {
+const validate = (url, urlFeeds) => {
   const schema = yup.object().shape({
     url: yup
       .string()
