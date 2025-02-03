@@ -84,6 +84,7 @@ export default () => {
     });
 
     // Прослушивание формы отправки
+    let submitButton = document.querySelector('button[type=submit]');
     elements.form.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
@@ -95,6 +96,9 @@ export default () => {
       validate(urlTarget, urlFeeds)
         .then(({ url }) => axios.get(createLink(url)))
         .then((responce) => {
+          if(submitButton){
+            submitButton.setAttribute('disabled', 'true');
+          }
           const parseData = parse(responce.data.contents);
           const { feed, posts } = parseData;
           watchedState.feeds.push({ ...feed, feedId: _.uniqueId(), url: urlTarget });
@@ -103,6 +107,9 @@ export default () => {
           watchedState.loadingProcess.error = '';
         })
         .catch((error) => {
+          if(submitButton){
+            submitButton.removeAttribute('disabled');
+          }
           if (error.isAxiosError) {
             watchedState.loadingProcess.error = 'networkError';
           } else if (error.message === 'invalidRSS') {
