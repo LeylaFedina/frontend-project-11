@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 import local from './lang/lang.js';
+
 yup.setLocale(local);
 
 // Server fetch url for get queries
