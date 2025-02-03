@@ -97,7 +97,7 @@ export default (elements, i18n, state) => {
   };
 
   const renderFinishedProcess = () => {
-    const { staticEl, input, errorElement } = elements;
+    const { input, errorElement } = elements;
     input.classList.remove('is-invalid');
     errorElement.classList.remove('text-danger');
     errorElement.classList.add('text-success');

@@ -84,7 +84,7 @@ export default () => {
     });
 
     // Прослушивание формы отправки
-    let submitButton = document.querySelector('button[type=submit]');
+    const submitButton = document.querySelector('button[type=submit]');
     elements.form.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);

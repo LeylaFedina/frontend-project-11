@@ -2,7 +2,6 @@ import * as yup from 'yup';
 import local from './lang/lang.js';
 yup.setLocale(local);
 
-
 // Server fetch url for get queries
 export const createLink = (url) => {
   const originsUrl = new URL('https://allorigins.hexlet.app/get?');
