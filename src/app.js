@@ -85,32 +85,32 @@ export default () => {
 
     // Прослушивание формы отправки
     elements.form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const urlTarget = formData.get('url').trim();
-        const urlFeeds = watchedState.feeds.map(({url}) => url);
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const urlTarget = formData.get('url').trim();
+      const urlFeeds = watchedState.feeds.map(({url}) => url);
 
-        watchedState.loadingProcess.status = 'sending';
+      watchedState.loadingProcess.status = 'sending';
 
-        validate(urlTarget, urlFeeds)
-          .then(({url}) => axios.get(createLink(url)))
-          .then((responce) => {
-            const parseData = parse(responce.data.contents);
-            const {feed, posts} = parseData;
-            watchedState.feeds.push({...feed, feedId: _.uniqueId(), url: urlTarget});
-            posts.forEach((post) => watchedState.posts.push({...post, id: _.uniqueId()}));
-            watchedState.loadingProcess.status = 'finished';
-            watchedState.loadingProcess.error = '';
-          })
-          .catch((error) => {
-            if (error.isAxiosError) {
-              watchedState.loadingProcess.error = 'networkError';
-            } else if (error.message === 'invalidRSS') {
-              watchedState.loadingProcess.error = 'invalidRSS';
-            } else {
-              watchedState.form.errors = error.message;
-            }
-          });
+      validate(urlTarget, urlFeeds)
+        .then(({url}) => axios.get(createLink(url)))
+        .then((responce) => {
+          const parseData = parse(responce.data.contents);
+          const {feed, posts} = parseData;
+          watchedState.feeds.push({...feed, feedId: _.uniqueId(), url: urlTarget});
+          posts.forEach((post) => watchedState.posts.push({...post, id: _.uniqueId()}));
+          watchedState.loadingProcess.status = 'finished';
+          watchedState.loadingProcess.error = '';
+        })
+        .catch((error) => {
+          if (error.isAxiosError) {
+            watchedState.loadingProcess.error = 'networkError';
+          } else if (error.message === 'invalidRSS') {
+            watchedState.loadingProcess.error = 'invalidRSS';
+          } else {
+            watchedState.form.errors = error.message;
+          }
+        });
     });
   });
 };
