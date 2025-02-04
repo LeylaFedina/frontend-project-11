@@ -95,7 +95,6 @@ export default () => {
         validate(urlTarget, urlFeeds)
           .then(({url}) => axios.get(createLink(url)))
           .then((responce) => {
-
             const parseData = parse(responce.data.contents);
             const {feed, posts} = parseData;
             watchedState.feeds.push({...feed, feedId: _.uniqueId(), url: urlTarget});
