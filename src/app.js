@@ -96,9 +96,9 @@ export default () => {
       validate(urlTarget, urlFeeds)
         .then(({ url }) => axios.get(createLink(url)))
         .then((responce) => {
-          if (submitButton) {
+          /*if (submitButton) {
             submitButton.closest('.col-auto').setAttribute('style', 'pointer-events: none; opacity: 0.7;');
-          }
+          }*/
           const parseData = parse(responce.data.contents);
           const { feed, posts } = parseData;
           watchedState.feeds.push({ ...feed, feedId: _.uniqueId(), url: urlTarget });
@@ -107,9 +107,9 @@ export default () => {
           watchedState.loadingProcess.error = '';
         })
         .catch((error) => {
-          if (submitButton) {
+          /*if (submitButton) {
             submitButton.closest('.col-auto').removeAttribute('style', 'pointer-events: none; opacity: 0.7;');
-          }
+          }*/
           if (error.isAxiosError) {
             watchedState.loadingProcess.error = 'networkError';
           } else if (error.message === 'invalidRSS') {
