@@ -84,11 +84,7 @@ export default () => {
     });
 
     // Прослушивание формы отправки
-    const submitButton = document.querySelector('button[type=submit]');
     elements.form.addEventListener('submit', (e) => {
-
-      if(!document.querySelector('.list-group')) {
-
         e.preventDefault();
         const formData = new FormData(e.target);
         const urlTarget = formData.get('url').trim();
@@ -116,14 +112,6 @@ export default () => {
               watchedState.form.errors = error.message;
             }
           });
-
-      }else{
-        e.preventDefault();
-        if (submitButton) {
-            //submitButton.closest('.col-auto').setAttribute('style', 'pointer-events: none; opacity: 0.7;');
-        }
-      }
-
     });
   });
 };
