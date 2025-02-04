@@ -84,7 +84,7 @@ export default () => {
     });
 
     // Прослушивание формы отправки
-   // const submitButton = document.querySelector('button[type=submit]');
+    const submitButton = document.querySelector('button[type=submit]');
     elements.form.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
@@ -97,7 +97,7 @@ export default () => {
         .then(({ url }) => axios.get(createLink(url)))
         .then((responce) => {
           if (submitButton) {
-            submitButton.setAttribute('disabled', 'true');
+            submitButton.closest('.col-auto').setAttribute('style', 'pointer-events: none; opacity: 0.7;');
           }
           const parseData = parse(responce.data.contents);
           const { feed, posts } = parseData;
@@ -108,7 +108,7 @@ export default () => {
         })
         .catch((error) => {
           if (submitButton) {
-            submitButton.removeAttribute('disabled');
+            submitButton.closest('.col-auto').removeAttribute('style', 'pointer-events: none; opacity: 0.7;');
           }
           if (error.isAxiosError) {
             watchedState.loadingProcess.error = 'networkError';
