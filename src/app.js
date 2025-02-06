@@ -62,7 +62,12 @@ export default () => {
           watchedState.posts = [...updatePosts, ...watchedState.posts];
         })
         .catch((e) => {
-          throw e;
+          const error = new Error('invalidData');
+          const errorElementInDom = document.querySelector('.feedback');
+          if (errorElementInDom) {
+            errorElementInDom.textContent = 'Server response is not correct!';
+          }
+          throw error;
         }));
 
       Promise.all(promises)
