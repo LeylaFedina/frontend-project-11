@@ -2,10 +2,14 @@ import i18next from 'i18next';
 import 'bootstrap';
 import axios from 'axios';
 import _ from 'lodash';
+import * as yup from 'yup';
 import validate, { createLink } from './utils.js';
 import watch from './view.js';
 import ru from './lang/ru.js';
 import parse from './parser.js';
+import local from './lang/lang.js';
+
+yup.setLocale(local);
 
 const elements = {
   staticEl: {
