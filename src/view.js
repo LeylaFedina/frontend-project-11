@@ -30,7 +30,7 @@ export default (elements, i18n, state) => {
   const renderFeeds = () => {
     const feedContainer = document.querySelector('.feeds');
     feedContainer.innerHTML = '';
-    const blok = renderBlock(t('feedTitle'));
+    const block = renderBlock(t('feedTitle'));
     const lists = document.createElement('ul');
     lists.classList.add('list-group', 'border-0', 'rounded-0');
 
@@ -47,7 +47,7 @@ export default (elements, i18n, state) => {
       li.append(h3, p);
       lists.append(li);
     });
-    feedContainer.append(blok, lists);
+    feedContainer.append(block, lists);
   };
 
   const renderPosts = () => {
