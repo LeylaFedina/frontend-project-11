@@ -11,41 +11,46 @@ import local from './lang/lang.js';
 
 yup.setLocale(local);
 
-const elements = {
-  staticEl: {
-    title: document.querySelector('h1'),
-    subtitle: document.querySelector('.lead'),
-    label: document.querySelector('[for="url-input"]'),
-    button: document.querySelector('[type="submit"]'),
-  },
-  form: document.querySelector('form'),
-  input: document.getElementById('url-input'),
-  errorElement: document.querySelector('.feedback'),
-  postsContainer: document.querySelector('.posts'),
-};
 
-const state = {
-  form: {
-    status: 'pending',
-    errors: '',
-  },
-  loadingProcess: {
-    status: 'sending',
-    error: '',
-  },
-  posts: [],
-  feeds: [],
-  ui: {
-    activePostId: '',
-    touchedPostId: new Set(),
-  },
-};
-
-const timeout = 5000;
 
 export default () => {
   const defaultLanguage = 'ru';
   const i18n = i18next.createInstance();
+
+
+  const elements = {
+    staticEl: {
+      title: document.querySelector('h1'),
+      subtitle: document.querySelector('.lead'),
+      label: document.querySelector('[for="url-input"]'),
+      button: document.querySelector('[type="submit"]'),
+    },
+    form: document.querySelector('form'),
+    input: document.getElementById('url-input'),
+    errorElement: document.querySelector('.feedback'),
+    postsContainer: document.querySelector('.posts'),
+  };
+
+  const state = {
+    form: {
+      status: 'pending',
+      errors: '',
+    },
+    loadingProcess: {
+      status: 'sending',
+      error: '',
+    },
+    posts: [],
+    feeds: [],
+    ui: {
+      activePostId: '',
+      touchedPostId: new Set(),
+    },
+  };
+
+  const timeout = 5000;
+
+
   i18n.init({
     lng: defaultLanguage,
     debug: true,
