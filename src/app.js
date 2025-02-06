@@ -83,9 +83,11 @@ export default () => {
       }
     });
 
+
     // Прослушивание формы отправки
     elements.form.addEventListener('submit', (e) => {
       e.preventDefault();
+      elements.staticEl.button.closest('.col-auto').setAttribute('style', 'pointer-events: none; opacity: 0.7;');
       const formData = new FormData(e.target);
       const urlTarget = formData.get('url').trim();
       const urlFeeds = watchedState.feeds.map(({ url }) => url);
@@ -103,6 +105,7 @@ export default () => {
           watchedState.loadingProcess.error = '';
         })
         .catch((error) => {
+          elements.staticEl.button.closest('.col-auto').removeAttribute('style');
           if (error.isAxiosError) {
             watchedState.loadingProcess.error = 'networkError';
           } else if (error.message === 'invalidRSS') {
