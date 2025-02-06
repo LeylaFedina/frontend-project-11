@@ -11,8 +11,6 @@ import local from './lang/lang.js';
 
 yup.setLocale(local);
 
-
-
 export default () => {
   const defaultLanguage = 'ru';
   const i18n = i18next.createInstance();
