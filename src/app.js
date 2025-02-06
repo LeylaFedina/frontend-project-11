@@ -17,7 +17,6 @@ export default () => {
   const defaultLanguage = 'ru';
   const i18n = i18next.createInstance();
 
-
   const elements = {
     staticEl: {
       title: document.querySelector('h1'),
@@ -49,7 +48,6 @@ export default () => {
   };
 
   const timeout = 5000;
-
 
   i18n.init({
     lng: defaultLanguage,
