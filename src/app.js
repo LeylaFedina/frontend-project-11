@@ -60,14 +60,6 @@ export default () => {
           const newPosts = posts.filter((post) => !existPosts.includes(post.url));
           const updatePosts = newPosts.map((post) => ({ ...post, id: _.uniqueId() }));
           watchedState.posts = [...updatePosts, ...watchedState.posts];
-        })
-        .catch((e) => {
-          const error = new Error('invalidData');
-          const errorElementInDom = document.querySelector('.feedback');
-          if (errorElementInDom) {
-            errorElementInDom.textContent = 'Server response is not correct!';
-          }
-          throw error;
         }));
 
       Promise.all(promises)
