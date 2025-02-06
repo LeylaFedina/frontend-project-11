@@ -104,6 +104,7 @@ export default () => {
           posts.forEach((post) => watchedState.posts.push({ ...post, id: _.uniqueId() }));
           watchedState.loadingProcess.status = 'finished';
           watchedState.loadingProcess.error = '';
+          elements.staticEl.button.closest('.col-auto').removeAttribute('style');
         })
         .catch((error) => {
           elements.staticEl.button.closest('.col-auto').removeAttribute('style');
