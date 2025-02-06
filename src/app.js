@@ -83,7 +83,6 @@ export default () => {
       }
     });
 
-
     // Прослушивание формы отправки
     elements.form.addEventListener('submit', (e) => {
       e.preventDefault();
