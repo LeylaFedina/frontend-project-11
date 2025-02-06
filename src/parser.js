@@ -3,11 +3,11 @@ export default (data) => {
   const doc = parser.parseFromString(data, 'text/xml');
   const errorNode = doc.querySelector('parsererror');
   if (errorNode) {
+    const errorElementInDom = document.querySelector('.feedback');
     const error = new Error('invalidRSS');
-    console.log('Внимание! Отправляемые данные некорректны!');
-    console.log('**** Ответ сервера ****');
-    console.log(errorNode.textContent);
-    console.log('***********************');
+    if(errorElementInDom){
+      errorElementInDom.textContent = errorNode.textContent;
+    }
     throw error;
   }
   const feedTitle = doc.querySelector('channel > title').textContent;
