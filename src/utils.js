@@ -1,6 +1,5 @@
 import * as yup from 'yup';
 
-
 // Server fetch url for get queries
 export const createLink = (url) => {
   const originsUrl = new URL('https://allorigins.hexlet.app/get?');
