@@ -5,9 +5,7 @@ export default (data) => {
   if (errorNode) {
     const errorElementInDom = document.querySelector('.feedback');
     const error = new Error('invalidRSS');
-    if (errorElementInDom) {
-      errorElementInDom.textContent = errorNode.textContent;
-    }
+    errorElementInDom.textContent = errorNode.textContent;
     throw error;
   }
   const feedTitle = doc.querySelector('channel > title').textContent;
