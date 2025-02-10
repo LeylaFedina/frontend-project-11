@@ -88,11 +88,11 @@ export default () => {
     // Прослушивание формы отправки
     elements.form.addEventListener('submit', (e) => {
       e.preventDefault();
-      elements.staticEl.button.closest('.col-auto').setAttribute('style', 'pointer-events: none; opacity: 0.7;');
       const formData = new FormData(e.target);
       const urlTarget = formData.get('url').trim();
       const urlFeeds = watchedState.feeds.map(({ url }) => url);
 
+      watchedState.loadingProcess.status = '';
       watchedState.loadingProcess.status = 'sending';
 
       validate(urlTarget, urlFeeds)
@@ -104,10 +104,8 @@ export default () => {
           posts.forEach((post) => watchedState.posts.push({ ...post, id: _.uniqueId() }));
           watchedState.loadingProcess.status = 'finished';
           watchedState.loadingProcess.error = '';
-          elements.staticEl.button.closest('.col-auto').removeAttribute('style');
         })
         .catch((error) => {
-          elements.staticEl.button.closest('.col-auto').removeAttribute('style');
           if (error.isAxiosError) {
             watchedState.loadingProcess.error = 'networkError';
           } else if (error.message === 'invalidRSS') {
