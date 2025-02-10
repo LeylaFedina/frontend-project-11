@@ -34,7 +34,7 @@ export default () => {
       errors: '',
     },
     loadingProcess: {
-      status: 'sending',
+      status: '',
       error: '',
     },
     posts: [],
@@ -92,7 +92,6 @@ export default () => {
       const urlTarget = formData.get('url').trim();
       const urlFeeds = watchedState.feeds.map(({ url }) => url);
 
-      watchedState.loadingProcess.status = '';
       watchedState.loadingProcess.status = 'sending';
 
       validate(urlTarget, urlFeeds)
