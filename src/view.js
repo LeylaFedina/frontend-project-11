@@ -46,7 +46,7 @@ export default (elements, i18n, state) => {
       li.append(h3, p);
       lists.append(li);
     });
-    feedContainer.replaceChildren(block,lists);
+    feedContainer.replaceChildren(block, lists);
   };
 
   const renderPosts = () => {
@@ -76,7 +76,7 @@ export default (elements, i18n, state) => {
       li.append(link, button);
       lists.append(li);
     });
-    postsContainer.replaceChildren(post,lists);
+    postsContainer.replaceChildren(post, lists);
   };
 
   const renderModal = () => {
