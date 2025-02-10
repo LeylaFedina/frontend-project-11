@@ -46,8 +46,7 @@ export default (elements, i18n, state) => {
       li.append(h3, p);
       lists.append(li);
     });
-
-    feedContainer.innerHTML = `<div class="card border-0">${block.innerHTML}</div><ul class="list-group border-0 rounded-0">${lists.innerHTML}</ul>`;
+    feedContainer.replaceChildren(block,lists);
   };
 
   const renderPosts = () => {
@@ -77,8 +76,7 @@ export default (elements, i18n, state) => {
       li.append(link, button);
       lists.append(li);
     });
-
-    postsContainer.innerHTML = `<div class="card border-0">${post.innerHTML}</div><ul class="list-group border-0 rounded-0">${lists.innerHTML}</ul>`;
+    postsContainer.replaceChildren(post,lists);
   };
 
   const renderModal = () => {
